@@ -91,11 +91,13 @@ Each phase script emits atomic fitness datums (NDJSON) normalized to [0.000 ... 
 | 3 — Source | `phases/phase3-source-truth.sh` | not yet implemented |
 | 4 — Bootable | `phases/phase4-bootable.sh` | not yet implemented |
 | 5 — Emulator Boot | `phases/phase5-emulator-boot.sh` | implemented (GSplus/KEGS/MAME support) |
+| 6 — Deconstruction | `phases/phase6-deconstruct.sh` | implemented (Ghidra headless infrastructure) |
 | Hello World (cc65) | `hello-world/` | implemented (8-bit smoke) |
 | Hello World (S16) | `hello-world-s16/` | implemented (ORCA/C real S16) |
 | Toolchain Doc | `docs/toolchain-paths.md` | cc65 + ORCA + APW |
 | ORCA Install Doc | `docs/install-orca.md` | implemented |
 | Emulator Doc | `docs/emulator-setup.md` | implemented (GSplus primary, KEGS/MAME fallback) |
+| Deconstruct Doc | `tools/deconstruct/README.md` | Ghidra + 65816 SLEIGH + clean-room rules |
 | Fitness Framework | `tools/fitness/` | implemented (emit + compute + baselines + tests) |
 
 ## License
