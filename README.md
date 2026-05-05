@@ -78,8 +78,10 @@ docs/           porting notes, MPW→APW Make conversion, partition layouts
 | 2 — Toolchain | `phases/phase2-toolchain.sh` | implemented (cc65 POSIX host variant) |
 | 3 — Source | `phases/phase3-source-truth.sh` | not yet implemented |
 | 4 — Bootable | `phases/phase4-bootable.sh` | not yet implemented |
+| 5 — Emulator Boot | `phases/phase5-emulator-boot.sh` | implemented (GSplus/KEGS/MAME support) |
 | Hello World | `hello-world/` | not yet written |
 | Toolchain Doc | `docs/toolchain-paths.md` | implemented (cc65 vs APW paths) |
+| Emulator Doc | `docs/emulator-setup.md` | implemented (GSplus primary, KEGS/MAME fallback) |
 
 ## License
 
