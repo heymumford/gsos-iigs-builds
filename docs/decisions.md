@@ -71,3 +71,13 @@ ADR-style log of decisions that bind the project. Each entry has context, decisi
 **Decision.** Every entry in `data/industry-baselines.json` carries `source` (one-sentence rationale) and `citation` (URL or doc path). Baselines are updated by editing the file with a new ADR entry; never silently changed. New atomic metrics added to a phase script require a new baseline before the metric can be emitted.
 
 **Consequence.** PR review checks the baselines file as carefully as it checks code. A baseline without a citation blocks merge.
+
+## D-008 — OpenGS is adjacent reference, not a contribution target
+
+**As of:** 2026-05-05
+
+**Context.** Reconnaissance of the IIGS ecosystem flagged "OpenGS" as a potential open-source reimplementation of GS/OS. Investigation found no canonical OpenGS repository (seanpm2001/WacOS_OpenGS is meme-tier placeholder). The closest public alternative OS effort is A2osX — a multi-tasking Unix-like environment for II, IIc, and IIGS — but it is not a GS/OS reimplementation.
+
+**Decision.** GS/OS reimplementation is not in scope for gsos-iigs-builds. This repo focuses on compiling the original GS/OS source on period hardware (with modern toolchains as a bridge). Alternative OS projects (A2osX, GNO, etc.) are adjacent reference only and are documented in `data/catalog.json` for researcher awareness. This repo does not contribute to or fork alternative OS efforts.
+
+**Consequence.** `data/catalog.json` catalogs historical and contemporary IIGS ecosystem sources. Legitimate source repositories (Asimov archive, Internet Archive, Juiced.GS distribution) are documented in `docs/source-mount-references.md` for user self-service. Alternative OS efforts appear in the catalog with clear scope boundaries ("not a GS/OS reimplementation").

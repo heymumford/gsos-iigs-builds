@@ -1,0 +1,55 @@
+[
+  {
+    "name": "ftp.apple.asimov.net",
+    "url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/",
+    "description": "Historical FTP archive of Apple II and Apple IIGS software, documentation, and utilities. Maintained daily mirror of the original asimov.net collection. Contains disk images, source archives, emulators, and reference documentation for GS/OS and IIGS software ecosystem.",
+    "type": "archive",
+    "scope": "Apple II/IIGS software repository; includes some GS/OS-related docs and utilities",
+    "lastUpdated": "2026-05-05",
+    "status": "active",
+    "citations": [
+      "https://mirrors.apple2.org.za/ftp.apple.asimov.net/",
+      "https://www.applefritter.com/content/asimov-apple-ii-archive"
+    ]
+  },
+  {
+    "name": "Internet Archive Apple IIGS Collection",
+    "url": "https://archive.org/details/softwarelibrary_apple2gs",
+    "description": "Internet Archive's curated collections of Apple IIGS software, including TOSEC (2012-04-23) with 1,100+ disk images covering games, applications, educational software, and operating systems. Also includes archived GSOS 6.0.1 source and regional collections.",
+    "type": "archive",
+    "scope": "1,100+ IIGS disk images (software, OS releases); GS/OS 6.0.1 source code archive",
+    "lastUpdated": "2026-05-05",
+    "status": "active",
+    "citations": [
+      "https://archive.org/details/softwarelibrary_apple2gs",
+      "https://archive.org/details/Apple_II_GS_TOSEC_2012_04_23",
+      "https://archive.org/details/GSOS_6.0.1_source"
+    ]
+  },
+  {
+    "name": "Byte Works ORCA Tools Distribution (Juiced.GS)",
+    "url": "https://juiced.gs/store/category/software/",
+    "description": "Authorized distribution channel for The Byte Works' development toolchain, including ORCA/C, ORCA/M, ORCA/Pascal, and related libraries (ORCALib, ORCA Linker). Complete ORCA distribution package available as Opus ][ bundle. Source code also maintained on GitHub at byteworksinc/ORCA-C.",
+    "type": "distribution",
+    "scope": "Authorized licensing and distribution of ORCA compiler suite for Apple IIGS native development",
+    "lastUpdated": "2026-05-05",
+    "status": "active",
+    "citations": [
+      "https://juiced.gs/store/category/software/",
+      "https://juiced.gs/vendor/byteworks/",
+      "https://github.com/byteworksinc/ORCA-C"
+    ]
+  },
+  {
+    "name": "A2osX Operating System",
+    "url": "https://github.com/A2osX/A2osX",
+    "description": "Open-source multi-tasking operating system for Apple II, IIc, and IIGS. Appears to be the closest public alternative OS effort for IIGS. Repository shows active maintenance with versioned releases.",
+    "type": "operating-system",
+    "scope": "Open-source alternative OS targeting IIGS; not a GS/OS reimplementation but rather a Unix-like environment",
+    "lastUpdated": "2026-05-05",
+    "status": "active",
+    "citations": [
+      "https://github.com/A2osX/A2osX"
+    ]
+  }
+]
