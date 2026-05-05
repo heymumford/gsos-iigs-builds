@@ -74,11 +74,12 @@ docs/           porting notes, MPW→APW Make conversion, partition layouts
 
 | Phase | Script | State |
 |-------|--------|-------|
-| 1 — Hardware | `phases/phase1-hardware.sh` | not yet implemented |
-| 2 — Toolchain | `phases/phase2-toolchain.sh` | not yet implemented |
+| 1 — Hardware | `phases/phase1-hardware.sh` | implemented (cc65 POSIX host variant) |
+| 2 — Toolchain | `phases/phase2-toolchain.sh` | implemented (cc65 POSIX host variant) |
 | 3 — Source | `phases/phase3-source-truth.sh` | not yet implemented |
 | 4 — Bootable | `phases/phase4-bootable.sh` | not yet implemented |
 | Hello World | `hello-world/` | not yet written |
+| Toolchain Doc | `docs/toolchain-paths.md` | implemented (cc65 vs APW paths) |
 
 ## License
 
