@@ -1,0 +1,393 @@
+[
+  {
+    "name": "Marinetti",
+    "category": "tcp_ip_stack",
+    "author": "Richard Bennett",
+    "latest_version": "3.0b11",
+    "latest_date": "unknown",
+    "license": "freeware",
+    "source_available": true,
+    "source_url": "https://sourceforge.net/projects/marinetti/",
+    "binary_url": "https://www.apple2.org/marinetti/",
+    "function_added": "TCP/IP stack for the Apple IIgs in 65816 assembly; enables Internet connectivity for GS/OS applications",
+    "depends_on": ["GS/OS 6.0.1+"],
+    "still_maintained": false,
+    "citations": [
+      "https://www.apple2.org/marinetti/",
+      "https://sourceforge.net/projects/marinetti/",
+      "https://www.callapple.org/software/marinetti-3-0b11-now-available/",
+      "https://a2retrosystems.com/Marinetti.htm"
+    ]
+  },
+  {
+    "name": "GNO/ME",
+    "category": "shell",
+    "author": "Procyon Enterprises; later Devin Reade; GnoConsortium maintainers",
+    "latest_version": "2.0.6",
+    "latest_date": "1999-02-15",
+    "license": "freeware",
+    "source_available": true,
+    "source_url": "https://github.com/GnoConsortium/gno-docs",
+    "binary_url": "https://www.gno.org/gno/",
+    "function_added": "UNIX-like preemptive multitasking shell environment for the Apple IIgs; replacement for ORCA Shell with multi-process command-line semantics",
+    "depends_on": ["GS/OS"],
+    "still_maintained": false,
+    "citations": [
+      "https://en.wikipedia.org/wiki/GNO/ME",
+      "https://www.gno.org/gno/",
+      "https://github.com/GnoConsortium/gno-docs",
+      "https://github.com/bobbimanners/GNO-Extras"
+    ]
+  },
+  {
+    "name": "ORCA/C",
+    "category": "dev_tool",
+    "author": "Mike Westerfield (The Byte Works)",
+    "latest_version": "2.2.1",
+    "latest_date": "unknown",
+    "license": "unknown",
+    "source_available": true,
+    "source_url": "https://github.com/byteworksinc/ORCA-C",
+    "binary_url": "https://github.com/byteworksinc/ORCA-C/releases",
+    "function_added": "ANSI C compiler for the 65816 with libraries for the Apple IIGS; ORCA/C 2.2.0+ adds C17 support",
+    "depends_on": ["GS/OS", "ORCA/M (for build)"],
+    "still_maintained": true,
+    "citations": [
+      "https://github.com/byteworksinc/ORCA-C",
+      "https://github.com/byteworksinc/ORCA-C/releases",
+      "https://www.vintageisthenewold.com/orcac-compiler-and-libraries-for-the-apple-iigs-source-code-has-been-release"
+    ]
+  },
+  {
+    "name": "ORCA/Pascal",
+    "category": "dev_tool",
+    "author": "Mike Westerfield (The Byte Works)",
+    "latest_version": "unknown",
+    "latest_date": "unknown",
+    "license": "unknown",
+    "source_available": true,
+    "source_url": "https://github.com/byteworksinc/ORCA-Pascal",
+    "binary_url": "unknown",
+    "function_added": "ISO Pascal compiler for the 65816 with libraries for the Apple IIGS",
+    "depends_on": ["GS/OS"],
+    "still_maintained": true,
+    "citations": [
+      "https://github.com/byteworksinc/ORCA-Pascal"
+    ]
+  },
+  {
+    "name": "ORCALib",
+    "category": "dev_tool",
+    "author": "Mike Westerfield (The Byte Works)",
+    "latest_version": "unknown",
+    "latest_date": "unknown",
+    "license": "unknown",
+    "source_available": true,
+    "source_url": "https://github.com/byteworksinc/ORCALib",
+    "binary_url": "unknown",
+    "function_added": "Shared libraries for the ORCA language suite (ORCA/C, ORCA/M, ORCA/Pascal) on the Apple IIGS",
+    "depends_on": [],
+    "still_maintained": true,
+    "citations": [
+      "https://github.com/byteworksinc/ORCALib"
+    ]
+  },
+  {
+    "name": "Merlin32",
+    "category": "dev_tool",
+    "author": "Brutal Deluxe Software",
+    "latest_version": "1.1",
+    "latest_date": "2019-06-27",
+    "license": "freeware",
+    "source_available": true,
+    "source_url": "https://github.com/digarok/merlin32",
+    "binary_url": "https://www.brutaldeluxe.fr/products/crossdevtools/merlin/",
+    "function_added": "Cross-platform 65816 assembler for the Apple II / Apple IIgs; runs on POSIX and Windows hosts",
+    "depends_on": [],
+    "still_maintained": true,
+    "citations": [
+      "https://www.brutaldeluxe.fr/products/crossdevtools/merlin/",
+      "https://github.com/digarok/merlin32/",
+      "https://www.brutaldeluxe.fr/archive.html"
+    ]
+  },
+  {
+    "name": "Cadius",
+    "category": "utility",
+    "author": "Brutal Deluxe Software (mach-kernel maintainer)",
+    "latest_version": "1.1",
+    "latest_date": "2019-06-27",
+    "license": "freeware",
+    "source_available": true,
+    "source_url": "https://github.com/mach-kernel/cadius",
+    "binary_url": "https://www.brutaldeluxe.fr/products/crossdevtools/cadius/",
+    "function_added": "ProDOS/HFS disk-image manipulation utility used to build, extract, and modify Apple II / IIgs disk images on POSIX and Windows hosts",
+    "depends_on": [],
+    "still_maintained": true,
+    "citations": [
+      "https://www.brutaldeluxe.fr/products/crossdevtools/cadius/",
+      "https://github.com/mach-kernel/cadius",
+      "https://www.brutaldeluxe.fr/archive.html"
+    ]
+  },
+  {
+    "name": "Golden Gate",
+    "category": "dev_tool",
+    "author": "Kelvin Sherlock",
+    "latest_version": "unknown",
+    "latest_date": "unknown",
+    "license": "unknown",
+    "source_available": true,
+    "source_url": "https://goldengate.gitlab.io/",
+    "binary_url": "https://goldengate.gitlab.io/",
+    "function_added": "Cross-platform compatibility layer that runs ORCA and GNO/ME command-line programs (including ORCA/C, ORCA/M, ORCA/Pascal) as native binaries on POSIX and Windows",
+    "depends_on": ["ORCA tooling on host"],
+    "still_maintained": true,
+    "citations": [
+      "https://goldengate.gitlab.io/",
+      "http://goldengate.gitlab.io/about/",
+      "https://juiced.gs/2017/06/ksherlock-golden-gate/",
+      "https://github.com/jeremysrand/Apple2GSBuildPipeline"
+    ]
+  },
+  {
+    "name": "Spectrum",
+    "category": "utility",
+    "author": "Ewen Wannop (originally published by Seven Hills Software)",
+    "latest_version": "2.5.5 (Platinum)",
+    "latest_date": "unknown",
+    "license": "freeware",
+    "source_available": false,
+    "source_url": "unknown",
+    "binary_url": "https://www.wannop.info/speccie/downloads/Spectrum.inf",
+    "function_added": "GS/OS-native telecommunications application; Apple IIgs terminal program with scripting language; Marinetti-aware; Ewen Wannop also developed Marinetti link-layer drivers",
+    "depends_on": ["GS/OS 6.0.1"],
+    "still_maintained": true,
+    "citations": [
+      "https://www.wannop.info/speccie/downloads/Spectrum.inf",
+      "https://www.callapple.org/vintage-apple-computers/apple-iigs/spectrum-platinum-2-5-5-update-released/",
+      "https://sis.gwlink.net/"
+    ]
+  },
+  {
+    "name": "ProTERM",
+    "category": "utility",
+    "author": "Greg Schaefer (Intrec Software / originally Checkmate Technology)",
+    "latest_version": "3.1",
+    "latest_date": "2008",
+    "license": "freeware",
+    "source_available": false,
+    "source_url": "unknown",
+    "binary_url": "https://mirrors.apple2.org.za/ftp.apple.asimov.net/documentation/applications/misc/PROTerm_A2_v3.1.pdf",
+    "function_added": "Apple II / IIgs terminal emulator and modem program with built-in editor; declared freeware in 2008",
+    "depends_on": ["ProDOS or GS/OS"],
+    "still_maintained": false,
+    "citations": [
+      "https://en.wikipedia.org/wiki/ProTERM",
+      "https://groups.google.com/g/comp.sys.apple2/c/5Luv5IyNCjA/m/TUVl38pKo-QJ",
+      "https://mirrors.apple2.org.za/ftp.apple.asimov.net/documentation/applications/misc/PROTerm_A2_v3.1.pdf"
+    ]
+  },
+  {
+    "name": "HyperStudio",
+    "category": "utility",
+    "author": "Roger Wagner (Roger Wagner Publishing)",
+    "latest_version": "3.1g (IIgs branch)",
+    "latest_date": "unknown",
+    "license": "abandonware",
+    "source_available": false,
+    "source_url": "unknown",
+    "binary_url": "https://archive.org/details/wozaday_HyperStudio_IIgs",
+    "function_added": "Multimedia / hypermedia authoring tool for the Apple IIgs; stack-and-button paradigm with sound, graphics, and scripted interactions",
+    "depends_on": ["1.5MB Apple IIgs ROM 01+", "GS/OS"],
+    "still_maintained": false,
+    "citations": [
+      "https://en.wikipedia.org/wiki/HyperStudio",
+      "https://www.whatisthe2gs.apple2.org.za/hyperstudio-3-1/index.html",
+      "https://archive.org/details/wozaday_HyperStudio_IIgs"
+    ]
+  },
+  {
+    "name": "The Manager",
+    "category": "os_extension",
+    "author": "Brainstorm Software (published by Seven Hills Software)",
+    "latest_version": "unknown",
+    "latest_date": "1995",
+    "license": "abandonware",
+    "source_available": false,
+    "source_url": "unknown",
+    "binary_url": "unknown",
+    "function_added": "MultiFinder-like extension for the Apple IIgs Finder; allows multiple GS/OS applications to run simultaneously rather than only desk accessories",
+    "depends_on": ["GS/OS", "2MB RAM (4MB recommended)"],
+    "still_maintained": false,
+    "citations": [
+      "https://groups.google.com/g/comp.sys.apple2/c/s6wFW8LzLxk",
+      "https://en.wikipedia.org/wiki/Apple_IIGS",
+      "https://www.whatisthe2gs.apple2.org.za/the-manager.html"
+    ]
+  },
+  {
+    "name": "GS-ShrinkIt",
+    "category": "utility",
+    "author": "Andy E. Nicholas",
+    "latest_version": "1.1",
+    "latest_date": "unknown",
+    "license": "freeware",
+    "source_available": false,
+    "source_url": "unknown",
+    "binary_url": "https://archive.org/details/3d0g_205a_ShrinkIt",
+    "function_added": "Archive utility for the Apple IIgs supporting the NuFX (.shk / .sdk) compressed format with resource fork preservation; canonical IIgs archive format",
+    "depends_on": ["GS/OS"],
+    "still_maintained": false,
+    "citations": [
+      "https://en.wikipedia.org/wiki/ShrinkIt",
+      "https://archive.org/details/3d0g_205a_ShrinkIt",
+      "https://wiki.preterhuman.net/SHRINKIT_FOR_THE_APPLE_IIGS"
+    ]
+  },
+  {
+    "name": "Apple2GSBuildPipeline",
+    "category": "dev_tool",
+    "author": "Jeremy Rand",
+    "latest_version": "unknown",
+    "latest_date": "unknown",
+    "license": "unknown",
+    "source_available": true,
+    "source_url": "https://github.com/jeremysrand/Apple2GSBuildPipeline",
+    "binary_url": "unknown",
+    "function_added": "Xcode-based build system for Apple IIgs software using ORCA languages and Golden Gate; integrates ORCA toolchain into modern POSIX dev workflow",
+    "depends_on": ["Golden Gate", "ORCA/C or ORCA/Pascal"],
+    "still_maintained": true,
+    "citations": [
+      "https://github.com/jeremysrand/Apple2GSBuildPipeline"
+    ]
+  },
+  {
+    "name": "KEGS",
+    "category": "utility",
+    "author": "Kent Dickey",
+    "latest_version": "unknown",
+    "latest_date": "unknown",
+    "license": "unknown",
+    "source_available": true,
+    "source_url": "https://kegs.sourceforge.net/",
+    "binary_url": "https://kegs.sourceforge.net/",
+    "function_added": "Apple IIgs emulator emulating 65816 at 500-950MHz on Unix/Linux/macOS/Windows 10+; ancestor of GSport and GSplus",
+    "depends_on": [],
+    "still_maintained": true,
+    "citations": [
+      "https://kegs.sourceforge.net/",
+      "https://github.com/aufflick/kegs"
+    ]
+  },
+  {
+    "name": "GSplus",
+    "category": "utility",
+    "author": "Dagen Brock (digarok); derived from GSport / KEGS",
+    "latest_version": "unknown",
+    "latest_date": "unknown",
+    "license": "unknown",
+    "source_available": true,
+    "source_url": "https://github.com/digarok/gsplus",
+    "binary_url": "https://github.com/digarok/gsplus",
+    "function_added": "Modern cross-platform Apple IIgs emulator built on KEGS core; adds Ethernet, host filesystem, and contemporary build system",
+    "depends_on": [],
+    "still_maintained": true,
+    "citations": [
+      "https://github.com/digarok/gsplus",
+      "https://github.com/applemu/gsplus"
+    ]
+  },
+  {
+    "name": "GSport",
+    "category": "utility",
+    "author": "David Schmidt and contributors (KEGS-derived)",
+    "latest_version": "unknown",
+    "latest_date": "unknown",
+    "license": "unknown",
+    "source_available": true,
+    "source_url": "https://github.com/david-schmidt/gsport",
+    "binary_url": "https://github.com/david-schmidt/gsport",
+    "function_added": "KEGS-derived Apple IIgs emulator adding Ethernet, printing, and platform integration; intermediate between KEGS and GSplus",
+    "depends_on": [],
+    "still_maintained": false,
+    "citations": [
+      "https://github.com/david-schmidt/gsport",
+      "https://kegs.sourceforge.net/"
+    ]
+  },
+  {
+    "name": "MAME apple2gs driver",
+    "category": "utility",
+    "author": "MAME team (R. Belmont and contributors)",
+    "latest_version": "tracks current MAME release",
+    "latest_date": "unknown",
+    "license": "gpl",
+    "source_available": true,
+    "source_url": "https://github.com/mamedev/mame",
+    "binary_url": "https://www.mamedev.org/release.html",
+    "function_added": "Apple IIgs emulation inside MAME with emulated ADB microcontroller and 5.25\"/3.5\" disk drives; high-accuracy reference emulator",
+    "depends_on": [],
+    "still_maintained": true,
+    "citations": [
+      "https://wiki.mamedev.org/index.php/Driver:Apple_II",
+      "https://rbelmont.mameworld.info/?p=1526"
+    ]
+  },
+  {
+    "name": "GSCII",
+    "category": "utility",
+    "author": "unknown",
+    "latest_version": "unknown",
+    "latest_date": "unknown",
+    "license": "freeware",
+    "source_available": false,
+    "source_url": "unknown",
+    "binary_url": "https://gswv.apple2.org.za/a2zine/faqs/Csa2FLUTILS.html",
+    "function_added": "GS/OS New Desk Accessory that decodes BINSCII-encoded files (Apple II's email-safe binary text encoding) directly from the desktop",
+    "depends_on": ["GS/OS"],
+    "still_maintained": false,
+    "citations": [
+      "https://public.websites.umich.edu/~archive/apple2/faq/faq.html",
+      "https://groups.google.com/g/comp.answers/c/mBVq-gpDYn8/m/Jj2MG4N98EsJ",
+      "https://gswv.apple2.org.za/a2zine/faqs/Csa2FLUTILS.html"
+    ]
+  },
+  {
+    "name": "Ninjaforce demoscene tools",
+    "category": "demoscene",
+    "author": "Ninjaforce",
+    "latest_version": "unknown",
+    "latest_date": "unknown",
+    "license": "freeware",
+    "source_available": false,
+    "source_url": "unknown",
+    "binary_url": "https://www.ninjaforce.com/html/products.html",
+    "function_added": "Suite of NDAs and utilities for IIgs demoscene work, including animation creation tools and an Amiga MOD-file player NDA (Shellplay-based)",
+    "depends_on": ["GS/OS"],
+    "still_maintained": false,
+    "citations": [
+      "https://www.ninjaforce.com/html/products.html",
+      "https://www.ninjaforce.com/html/special_demoscene.html"
+    ]
+  },
+  {
+    "name": "KansasFest",
+    "category": "demoscene",
+    "author": "KansasFest organizers (community-run)",
+    "latest_version": "KFest 2024 (35th annual)",
+    "latest_date": "2024-07-21",
+    "license": "n/a",
+    "source_available": false,
+    "source_url": "unknown",
+    "binary_url": "https://www.kansasfest.org/",
+    "function_added": "Annual Apple II / IIgs convention; primary distribution channel for new IIgs hardware (AppleTini, etc.) and software releases each year",
+    "depends_on": [],
+    "still_maintained": true,
+    "citations": [
+      "https://www.kansasfest.org/",
+      "https://en.wikipedia.org/wiki/KansasFest",
+      "https://www.kansasfest.org/wp-content/uploads/2024/06/KansasFest-A24eVR-2024-schedule.pdf"
+    ]
+  }
+]
