@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "generated": "2026-05-05T08:33:47Z",
+  "phases": [
+    {
+      "phase": "2",
+      "generated": "2026-05-05T08:33:47Z",
+      "atomics": [
+        {
+          "ts": "2026-05-05T08:33:47Z",
+          "phase": "2",
+          "metric": "phase2.apple2enh_compile",
+          "raw": 1,
+          "unit": "exit_code",
+          "baseline": {
+            "value": 0,
+            "source": "A successful cc65 --target apple2enh compile of a minimal C program returns exit 0."
+          },
+          "weight": 0.20,
+          "normalized": 0.000
+        },
+        {
+          "ts": "2026-05-05T08:33:47Z",
+          "phase": "2",
+          "metric": "phase2.ca65_present",
+          "raw": 0,
+          "unit": "bool",
+          "baseline": {
+            "value": 1,
+            "source": "ca65 is the macro assembler shipped in the cc65 distribution."
+          },
+          "weight": 0.10,
+          "normalized": 0.000
+        },
+        {
+          "ts": "2026-05-05T08:33:47Z",
+          "phase": "2",
+          "metric": "phase2.cc65_present",
+          "raw": 0,
+          "unit": "bool",
+          "baseline": {
+            "value": 1,
+            "source": "cc65 toolchain (cc65/ca65/ld65/cl65) is the 8-bit apple2enh path's required base."
+          },
+          "weight": 0.20,
+          "normalized": 0.000
+        },
+        {
+          "ts": "2026-05-05T08:33:47Z",
+          "phase": "2",
+          "metric": "phase2.cc65_version",
+          "raw": 0,
+          "unit": "semver",
+          "baseline": {
+            "value": 2.19,
+            "source": "cc65 v2.19+ is the current stable line; pre-2.19 lacks complete 65816/apple2enh support."
+          },
+          "weight": 0.15,
+          "normalized": 0.000
+        },
+        {
+          "ts": "2026-05-05T08:33:47Z",
+          "phase": "2",
+          "metric": "phase2.cl65_present",
+          "raw": 0,
+          "unit": "bool",
+          "baseline": {
+            "value": 1,
+            "source": "cl65 is the unified compile/assemble/link driver shipped in the cc65 distribution."
+          },
+          "weight": 0.10,
+          "normalized": 0.000
+        },
+        {
+          "ts": "2026-05-05T08:33:47Z",
+          "phase": "2",
+          "metric": "phase2.ld65_present",
+          "raw": 0,
+          "unit": "bool",
+          "baseline": {
+            "value": 1,
+            "source": "ld65 is the linker shipped in the cc65 distribution."
+          },
+          "weight": 0.10,
+          "normalized": 0.000
+        },
+        {
+          "ts": "2026-05-05T08:33:47Z",
+          "phase": "2",
+          "metric": "phase2.p816_directive",
+          "raw": 1,
+          "unit": "exit_code",
+          "baseline": {
+            "value": 0,
+            "source": "ca65 with the .P816 directive must accept 65816-mode source and return exit 0."
+          },
+          "weight": 0.15,
+          "normalized": 0.000
+        }
+      ],
+      "compound": 0
+    }
+  ]
+}

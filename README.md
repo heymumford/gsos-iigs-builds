@@ -70,18 +70,31 @@ hello-world/    minimal 16-bit GS/OS app, toolchain smoke test
 docs/           porting notes, MPW→APW Make conversion, partition layouts
 ```
 
+## Roadmap, decisions, and fitness framework
+
+- [`ROADMAP.md`](ROADMAP.md) — slice plan, current state, next waves
+- [`docs/decisions.md`](docs/decisions.md) — ADR-style decision log (Apple IP boundary, ORCA path, fitness contract, stop conditions)
+- [`tools/fitness/README.md`](tools/fitness/README.md) — atomic + compound + time-series fitness framework
+- [`data/industry-baselines.json`](data/industry-baselines.json) — citation-bearing reference values per metric
+
+Each phase script emits atomic fitness datums (NDJSON) normalized to [0.000 ... 1.000] against industry baselines. `tools/fitness/compute.sh` aggregates them into a compound score per phase.
+
 ## Status
 
 | Phase | Script | State |
 |-------|--------|-------|
 | 1 — Hardware | `phases/phase1-hardware.sh` | implemented (cc65 POSIX host variant) |
-| 2 — Toolchain | `phases/phase2-toolchain.sh` | implemented (cc65 POSIX host variant) |
+| 2 — Toolchain (cc65) | `phases/phase2-toolchain.sh` | implemented + fitness emission wired |
+| 2-ORCA — Toolchain (16-bit) | `phases/phase2-orca.sh` | implemented (ORCA/C + Golden Gate) |
 | 3 — Source | `phases/phase3-source-truth.sh` | not yet implemented |
 | 4 — Bootable | `phases/phase4-bootable.sh` | not yet implemented |
 | 5 — Emulator Boot | `phases/phase5-emulator-boot.sh` | implemented (GSplus/KEGS/MAME support) |
-| Hello World | `hello-world/` | not yet written |
-| Toolchain Doc | `docs/toolchain-paths.md` | implemented (cc65 vs APW paths) |
+| Hello World (cc65) | `hello-world/` | implemented (8-bit smoke) |
+| Hello World (S16) | `hello-world-s16/` | implemented (ORCA/C real S16) |
+| Toolchain Doc | `docs/toolchain-paths.md` | cc65 + ORCA + APW |
+| ORCA Install Doc | `docs/install-orca.md` | implemented |
 | Emulator Doc | `docs/emulator-setup.md` | implemented (GSplus primary, KEGS/MAME fallback) |
+| Fitness Framework | `tools/fitness/` | implemented (emit + compute + baselines + tests) |
 
 ## License
 

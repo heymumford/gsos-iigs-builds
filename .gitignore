@@ -32,3 +32,9 @@ phases/local-config.sh
 # User-supplied ROM and disk images (never commit Apple IP)
 roms/
 disk-images/
+
+# Working-tree-only handoff state — never commit
+.claude/
+
+# Fitness time-series log (running log, too noisy to commit; snapshot is committed)
+data/fitness-history.ndjson

@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-05-05",
+  "rationale": "Atomic fitness datums emitted by phase scripts are normalized against these reference values to produce a deterministic [0.000..1.000] score. Each baseline is sourced from an industry standard, project authority, or internal observation; sourcing is non-negotiable.",
+  "baselines": [
+    {
+      "metric": "phase1.ram_gb",
+      "value": 4,
+      "unit": "count",
+      "source": "Modern POSIX host needs >= 4GB RAM to run cc65 + ld65 + emulator concurrently. Self-hosted IIGS builds historically required >= 4MB on the IIGS itself; we measure host headroom.",
+      "citation": "Apple IIGS Hardware Reference (Chapter 1) + GS/OS Reference"
+    },
+    {
+      "metric": "phase1.disk_gb",
+      "value": 1,
+      "unit": "count",
+      "source": "Build artifacts, ROM/disk-image mounts, and emulator state fit comfortably in 1GB headroom on the repo partition.",
+      "citation": "Internal observation, slice 2"
+    },
+    {
+      "metric": "phase1.emulator_present",
+      "value": 1,
+      "unit": "bool",
+      "source": "Phase 5 boot test requires at least one IIGS emulator (gsplus, kegs, or mame apple2gs) on PATH.",
+      "citation": "phases/phase5-emulator-boot.sh"
+    },
+    {
+      "metric": "phase2.cc65_present",
+      "value": 1,
+      "unit": "bool",
+      "source": "cc65 toolchain (cc65/ca65/ld65/cl65) is the 8-bit apple2enh path's required base.",
+      "citation": "https://github.com/cc65/cc65/releases"
+    },
+    {
+      "metric": "phase2.cc65_version",
+      "value": 2.19,
+      "unit": "semver",
+      "source": "cc65 v2.19+ is the current stable line; pre-2.19 lacks complete 65816/apple2enh support.",
+      "citation": "https://cc65.github.io/doc/"
+    },
+    {
+      "metric": "phase2.ca65_present",
+      "value": 1,
+      "unit": "bool",
+      "source": "ca65 is the macro assembler shipped in the cc65 distribution.",
+      "citation": "https://cc65.github.io/doc/ca65.html"
+    },
+    {
+      "metric": "phase2.ld65_present",
+      "value": 1,
+      "unit": "bool",
+      "source": "ld65 is the linker shipped in the cc65 distribution.",
+      "citation": "https://cc65.github.io/doc/ld65.html"
+    },
+    {
+      "metric": "phase2.cl65_present",
+      "value": 1,
+      "unit": "bool",
+      "source": "cl65 is the unified compile/assemble/link driver shipped in the cc65 distribution.",
+      "citation": "https://cc65.github.io/doc/cl65.html"
+    },
+    {
+      "metric": "phase2.apple2enh_compile",
+      "value": 0,
+      "unit": "exit_code",
+      "source": "A successful cc65 --target apple2enh compile of a minimal C program returns exit 0.",
+      "citation": "https://cc65.github.io/doc/cc65.html"
+    },
+    {
+      "metric": "phase2.p816_directive",
+      "value": 0,
+      "unit": "exit_code",
+      "source": "ca65 with the .P816 directive must accept 65816-mode source and return exit 0.",
+      "citation": "https://cc65.github.io/doc/ca65.html#.P816"
+    },
+    {
+      "metric": "phase2_orca.orca_present",
+      "value": 1,
+      "unit": "bool",
+      "source": "ORCA/C is the canonical 16-bit C compiler for GS/OS S16 binaries (Byte Works).",
+      "citation": "https://github.com/byteworksinc/ORCA-C"
+    },
+    {
+      "metric": "phase2_orca.golden_gate_present",
+      "value": 1,
+      "unit": "bool",
+      "source": "Golden Gate is Kelvin Sherlock's compatibility layer that runs ORCA tools natively on POSIX.",
+      "citation": "https://github.com/ksherlock/golden-gate"
+    },
+    {
+      "metric": "phase5.boot_time_seconds",
+      "value": 3,
+      "unit": "seconds",
+      "source": "GSplus boots GS/OS 6.0.1 to Finder in 1-3 seconds on modern POSIX hosts.",
+      "citation": "GSplus README + community benchmarks (digarok/gsplus)"
+    },
+    {
+      "metric": "hello_world_cc65.binary_size_bytes",
+      "value": 2048,
+      "unit": "bytes",
+      "source": "Typical cc65 apple2enh hello world binary is 1-3 KB; 2048 is the median.",
+      "citation": "cc65 samples/ directory"
+    },
+    {
+      "metric": "hello_world_s16.binary_size_bytes",
+      "value": 8192,
+      "unit": "bytes",
+      "source": "Typical ORCA/C hello world S16 with Toolbox calls is 5-10 KB; 8192 is the median.",
+      "citation": "Apple IIGS Toolbox Reference Volume 1, sample programs"
+    }
+  ]
+}
