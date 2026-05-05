@@ -1,0 +1,29 @@
+# Build artifacts
+*.o
+*.OBJ
+*.obj
+*.a
+*.lib
+*.bin
+*.bin.gz
+*.dsk
+*.po
+*.2mg
+
+# Editor / OS noise
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# Source code mounted out-of-band — never commit Apple IP
+sources/
+includes/
+libraries/
+GS_OS_Source/
+
+# Local environment overrides
+.env
+.env.local
+phases/local-config.sh
