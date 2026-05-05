@@ -30,6 +30,12 @@ emit_note() {
   printf '[phase2] %s\n' "$*" >&2
 }
 
+# Source the atomic fitness emitter. Each check below emits a fitness datum
+# with raw + normalized [0..1] + baseline + weight. Compound score is
+# computed by tools/fitness/compute.sh.
+# shellcheck source=../tools/fitness/emit.sh
+source "$(dirname "$0")/../tools/fitness/emit.sh"
+
 # Counters for overall health
 red_count=0
 yellow_count=0
@@ -41,12 +47,15 @@ checks=$((checks + 1))
 if command -v cc65 &>/dev/null; then
   cc65_version=$(cc65 --version 2>&1 | head -1)
   emit_fact "cc65_version" "$cc65_version"
+  fitness_emit "2" "phase2.cc65_present" 1 "bool" "0.20"
 
   # Parse semantic version: expect "cc65 V2.19" or similar
   # Extract major.minor from version string
   if [[ "$cc65_version" =~ V([0-9]+)\.([0-9]+) ]]; then
     cc65_major="${BASH_REMATCH[1]}"
     cc65_minor="${BASH_REMATCH[2]}"
+    cc65_semver=$(printf '%d.%d' "$cc65_major" "$cc65_minor")
+    fitness_emit "2" "phase2.cc65_version" "$cc65_semver" "semver" "0.15"
 
     if (( cc65_major > 2 || (cc65_major == 2 && cc65_minor >= 19) )); then
       emit_note "cc65: $cc65_version (pass, >= 2.19)"
@@ -56,11 +65,14 @@ if command -v cc65 &>/dev/null; then
     fi
   else
     emit_note "cc65: version string '$cc65_version' does not match expected format (yellow)"
+    fitness_emit "2" "phase2.cc65_version" 0 "semver" "0.15"
     yellow_count=$((yellow_count + 1))
   fi
 else
   emit_fact "cc65_version" "not_found"
   emit_note "cc65: command not found (red)"
+  fitness_emit "2" "phase2.cc65_present" 0 "bool" "0.20"
+  fitness_emit "2" "phase2.cc65_version" 0 "semver" "0.15"
   red_count=$((red_count + 1))
 fi
 
@@ -70,9 +82,11 @@ checks=$((checks + 1))
 if command -v ca65 &>/dev/null; then
   ca65_version=$(ca65 --version 2>&1 | head -1)
   emit_fact "ca65_version" "$ca65_version"
+  fitness_emit "2" "phase2.ca65_present" 1 "bool" "0.10"
   emit_note "ca65: found (pass)"
 else
   emit_fact "ca65_version" "not_found"
+  fitness_emit "2" "phase2.ca65_present" 0 "bool" "0.10"
   emit_note "ca65: command not found (red)"
   red_count=$((red_count + 1))
 fi
@@ -83,9 +97,11 @@ checks=$((checks + 1))
 if command -v ld65 &>/dev/null; then
   ld65_version=$(ld65 --version 2>&1 | head -1)
   emit_fact "ld65_version" "$ld65_version"
+  fitness_emit "2" "phase2.ld65_present" 1 "bool" "0.10"
   emit_note "ld65: found (pass)"
 else
   emit_fact "ld65_version" "not_found"
+  fitness_emit "2" "phase2.ld65_present" 0 "bool" "0.10"
   emit_note "ld65: command not found (red)"
   red_count=$((red_count + 1))
 fi
@@ -96,9 +112,11 @@ checks=$((checks + 1))
 if command -v cl65 &>/dev/null; then
   cl65_version=$(cl65 --version 2>&1 | head -1)
   emit_fact "cl65_version" "$cl65_version"
+  fitness_emit "2" "phase2.cl65_present" 1 "bool" "0.10"
   emit_note "cl65: found (pass)"
 else
   emit_fact "cl65_version" "not_found"
+  fitness_emit "2" "phase2.cl65_present" 0 "bool" "0.10"
   emit_note "cl65: command not found (red)"
   red_count=$((red_count + 1))
 fi
@@ -115,20 +133,24 @@ EOF
 
 if echo "$test_c" | cc65 --target apple2enh -o /dev/null - 2>/dev/null; then
   emit_fact "apple2enh_target" "success"
+  fitness_emit "2" "phase2.apple2enh_compile" 0 "exit_code" "0.20"
   emit_note "apple2enh target: compile test passed (pass)"
 elif echo "$test_c" | cc65 --target apple2enh -o /tmp/test_phase2.s - 2>/dev/null; then
   # Fallback: check if assembly was generated (some versions write to file)
   if [[ -f /tmp/test_phase2.s ]]; then
     rm -f /tmp/test_phase2.s
     emit_fact "apple2enh_target" "success"
+    fitness_emit "2" "phase2.apple2enh_compile" 0 "exit_code" "0.20"
     emit_note "apple2enh target: compile test passed (pass)"
   else
     emit_fact "apple2enh_target" "fail"
+    fitness_emit "2" "phase2.apple2enh_compile" 1 "exit_code" "0.20"
     emit_note "apple2enh target: compile test failed (red)"
     red_count=$((red_count + 1))
   fi
 else
   emit_fact "apple2enh_target" "fail"
+  fitness_emit "2" "phase2.apple2enh_compile" 1 "exit_code" "0.20"
   emit_note "apple2enh target: compile test failed (red)"
   red_count=$((red_count + 1))
 fi
@@ -148,15 +170,18 @@ EOF
 if echo "$test_asm" | ca65 --target apple2enh -o /tmp/test_phase2.o - 2>/dev/null; then
   rm -f /tmp/test_phase2.o
   emit_fact "p816_directive" "success"
+  fitness_emit "2" "phase2.p816_directive" 0 "exit_code" "0.15"
   emit_note ".P816 directive: assembler test passed (pass)"
 else
   # Try without the target flag
   if echo "$test_asm" | ca65 -o /tmp/test_phase2.o - 2>/dev/null; then
     rm -f /tmp/test_phase2.o
     emit_fact "p816_directive" "success"
+    fitness_emit "2" "phase2.p816_directive" 0 "exit_code" "0.15"
     emit_note ".P816 directive: assembler test passed (pass)"
   else
     emit_fact "p816_directive" "fail"
+    fitness_emit "2" "phase2.p816_directive" 1 "exit_code" "0.15"
     emit_note ".P816 directive: assembler test failed (red)"
     red_count=$((red_count + 1))
   fi

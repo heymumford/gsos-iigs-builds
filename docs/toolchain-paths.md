@@ -28,7 +28,38 @@ This document outlines the two viable paths for compiling GS/OS 6.0.x, noting th
 
 **Toolchain version (stable):** cc65 v2.19+ (released 2024+, includes 65816 full support)
 
-## Path B: APW on Emulated or Real IIGS
+## Path B: ORCA/C via Golden Gate (POSIX Host)
+
+**Toolchain authority:** https://github.com/byteworksinc/ORCA-C (compiler) + https://github.com/ksherlock/golden-gate (compatibility layer)
+
+**Overview:** ORCA/C is the canonical 16-bit C compiler for the Apple IIGS. Golden Gate is a compatibility layer that allows ORCA command-line tools (ORCA/C, ORCA/M, ORCALink) to run natively on POSIX systems. Together, they enable authentic IIGS development on modern machines without emulation overhead.
+
+**Relevant ORCA/C features:**
+- **Compiler:** ANSI C (C17-capable) for 65816 with native IIGS system calls
+- **Assembler (ORCA/M):** Macro assembler for 65816 with S16 segment support
+- **Linker (ORCALink):** 16-bit linker producing OMF (Object Module Format) S16 binaries
+- **Standard library (ORCALib):** GS/OS Toolbox libraries, native ProDOS I/O
+- **Output:** True 16-bit S16 executable binaries (type $B3) for IIGS hardware or emulator
+
+**Advantages:**
+- CI-friendly: runs on any POSIX host without emulation layer
+- Authentic output: produces real 16-bit S16 binaries, not 8-bit targets
+- Direct compilation: ORCA/C → assembly → object → link → S16 executable
+- Minimal overhead: Golden Gate is a thin wrapper; no emulator startup latency
+- Self-hosted path: compiles GS/OS kernel code (the original ORCA target)
+- Standard library: full ORCALib integration for GS/OS Toolbox calls
+- Well-maintained: ORCA/C 2.2.1+ is current and actively updated
+
+**Disadvantages:**
+- Build complexity: requires both Golden Gate and ORCA/C installations
+- Newer toolchain: cc65's `apple2enh` target is more mature for quick prototyping
+- Infrastructure: ORCA installation must be discoverable by Golden Gate
+
+**Toolchain version (stable):** ORCA/C 2.2.1+ (released 2023+), Golden Gate 1.0+ (GitHub latest)
+
+**Installation:** See `docs/install-orca.md` for detailed setup steps.
+
+## Path C: APW on Emulated or Real IIGS
 
 **Toolchain authority:** Apple Programmer's Workshop (Apple IIGS Programmer's Workshop Assembler Reference; PDF: http://www.goldstarsoftware.com/applesite/Documentation/APWAssemblerReference.PDF)
 
@@ -57,18 +88,19 @@ This document outlines the two viable paths for compiling GS/OS 6.0.x, noting th
 - GSplus (digarok/gsplus): modern fork, SDL2-based, cross-platform
 - MAME apple2gs driver: full-featured, but heavy configuration
 
-## V1 Strategy: cc65 as CI Default, APW as Future Separate Track
+## V1 Strategy: cc65 (8-bit), ORCA/Golden Gate (16-bit), APW as Long-Tail Variant
 
 **Rationale:**
-1. **Velocity:** cc65 ships immediately in CI. Hello World compiles in seconds, not minutes.
-2. **Reversibility:** cc65 phases are completely decoupled from APW infrastructure. They can coexist.
-3. **Learning:** Phase 1 + 2 will expose what cc65 cannot express (if anything). Phase 3 (source truth) and Phase 4 (bootable artifact) will reveal the cost of divergence.
-4. **Compatibility:** Both paths use the same source tree. Conditional compilation (e.g., `#ifdef __CC65_FOR_IIGS__`) can bridge differences without forking the codebase.
+1. **Dual path:** cc65 (8-bit Apple II Enhanced target) is a quick smoke test; ORCA/Golden Gate (16-bit S16 binaries) is the authentic GS/OS path.
+2. **Velocity:** Both paths run on POSIX CI with no emulation overhead. ORCA reaches real kernel/driver code; cc65 validates toolchain readiness.
+3. **Reversibility:** Phase 2 now offers two independent fitness functions (`phase2-toolchain.sh` for cc65, `phase2-orca.sh` for ORCA). Each is decoupled from the other and from APW.
+4. **Learning:** ORCA/Golden Gate exposes the real constraints of GS/OS development (OMF linking, segment definitions, Toolbox calls). cc65 remains a shallow-test option.
+5. **Compatibility:** Both paths compile the same source tree. Conditional compilation (e.g., `#ifdef __ORCA__` / `#ifdef __CC65__`) bridges differences without forking.
 
 **Next phases (slice 3+):**
-- Phase 3 (Source Truth) remains CC65-agnostic: it tests source properties (encoding, line endings, includes) that are toolchain-independent.
-- Phase 4 (Bootable Artifact) will be cc65-specific for v1, deferred to a separate `phases/phase4-*-apw.sh` variant once APW infrastructure is available.
-- APW-based phases can be added as `phases/phase1-hardware-apw.sh`, `phases/phase2-toolchain-apw.sh`, etc., running in parallel once emulator tooling is stable.
+- Phase 3 (Source Truth) remains toolchain-agnostic: it tests source properties (encoding, line endings, includes).
+- Phase 4 (Bootable Artifact) will prioritize ORCA/Golden Gate for authentic S16 binaries; cc65 variant deferred.
+- APW-based phases (`phase1-hardware-apw.sh`, `phase2-toolchain-apw.sh`, etc.) are long-tail, added only after emulator infrastructure (KEGS, GSplus, MAME) is stable and in-scope.
 
 ## References
 

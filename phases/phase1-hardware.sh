@@ -28,6 +28,12 @@ emit_note() {
   printf '[phase1] %s\n' "$*" >&2
 }
 
+# Source the atomic fitness emitter. Each check below emits a fitness datum
+# with raw + normalized [0..1] + baseline + weight. Compound score is
+# computed by tools/fitness/compute.sh.
+# shellcheck source=../tools/fitness/emit.sh
+source "$(dirname "$0")/../tools/fitness/emit.sh"
+
 # Counters for overall health
 red_count=0
 yellow_count=0
@@ -64,6 +70,7 @@ if [[ -n "$total_ram_bytes" ]]; then
   # Convert to GB for readability
   total_ram_gb=$(( (total_ram_bytes + 1073741823) / 1073741824 ))
   emit_fact "total_ram_gb" "$total_ram_gb"
+  fitness_emit "1" "phase1.ram_gb" "$total_ram_gb" "count" "0.40"
 
   if (( total_ram_bytes >= 4294967296 )); then
     emit_note "RAM: $total_ram_gb GB (pass, >= 4GB)"
@@ -93,6 +100,7 @@ if [[ -d "$repo_root" ]]; then
   if [[ -n "$available_bytes" ]]; then
     available_gb=$(( (available_bytes + 1073741823) / 1073741824 ))
     emit_fact "available_disk_gb" "$available_gb"
+    fitness_emit "1" "phase1.disk_gb" "$available_gb" "count" "0.30"
 
     if (( available_bytes >= 1073741824 )); then
       emit_note "Disk: $available_gb GB available (pass, >= 1GB)"
@@ -124,9 +132,11 @@ done
 
 if [[ -n "$emulator_found" ]]; then
   emit_fact "emulator" "$emulator_found"
+  fitness_emit "1" "phase1.emulator_present" 1 "bool" "0.30"
   emit_note "Emulator: $emulator_found found (pass)"
 else
   emit_fact "emulator" "none"
+  fitness_emit "1" "phase1.emulator_present" 0 "bool" "0.30"
   emit_note "Emulator: none of {kegs, gsplus, mame} found (yellow; not blocking for cc65 cross-compile)"
   yellow_count=$((yellow_count + 1))
 fi
