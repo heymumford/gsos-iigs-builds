@@ -75,6 +75,7 @@ docs/           porting notes, MPW→APW Make conversion, partition layouts
 
 - [`ROADMAP.md`](ROADMAP.md) — slice plan, current state, next waves
 - [`docs/decisions.md`](docs/decisions.md) — ADR-style decision log (Apple IP boundary, ORCA path, fitness contract, stop conditions)
+- [`docs/source-mount-references.md`](docs/source-mount-references.md) — legitimate sources for GS/OS, ROMs, and disk images
 - [`tools/fitness/README.md`](tools/fitness/README.md) — atomic + compound + time-series fitness framework
 - [`data/industry-baselines.json`](data/industry-baselines.json) — citation-bearing reference values per metric
 
