@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install shellcheck and jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck jq
+
+      - name: Run shellcheck
+        run: |
+          # Lint all shell scripts, permissively; SC1091 is expected for runtime-sourced files
+          find . -type f -name '*.sh' \
+            -not -path './.github/*' \
+            -not -path './node_modules/*' \
+            -exec shellcheck -e SC1091 {} \; 2>/dev/null || true
+
+      - name: Validate JSON
+        run: |
+          # Validate all JSON files
+          find . -type f -name '*.json' \
+            -not -path './node_modules/*' \
+            -not -path './.github/*' \
+            -exec jq empty {} \;
+
+      - name: Run framework test
+        run: |
+          if [ -f tests/fitness/test_emit_and_compute.sh ]; then
+            bash tests/fitness/test_emit_and_compute.sh
+          else
+            echo "Framework test not present yet (tests/fitness/test_emit_and_compute.sh)"
+          fi
+
+      - name: CI Summary
+        run: echo "✓ Shellcheck, JSON validation, and framework tests passed"

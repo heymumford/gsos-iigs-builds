@@ -1,4 +1,5 @@
 # gsos-iigs-builds
+![CI](https://github.com/heymumford/gsos-iigs-builds/actions/workflows/ci.yml/badge.svg)
 
 Apple IIGS GS/OS builds. A fitness-function-driven pipeline for self-hosted OS compilation using APW (Apple Programmer's Workshop).
 
