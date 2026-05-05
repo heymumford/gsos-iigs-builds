@@ -9,6 +9,7 @@
 *.dsk
 *.po
 *.2mg
+*.rom
 
 # Editor / OS noise
 .DS_Store
@@ -27,3 +28,7 @@ GS_OS_Source/
 .env
 .env.local
 phases/local-config.sh
+
+# User-supplied ROM and disk images (never commit Apple IP)
+roms/
+disk-images/
