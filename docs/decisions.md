@@ -81,3 +81,33 @@ ADR-style log of decisions that bind the project. Each entry has context, decisi
 **Decision.** GS/OS reimplementation is not in scope for gsos-iigs-builds. This repo focuses on compiling the original GS/OS source on period hardware (with modern toolchains as a bridge). Alternative OS projects (A2osX, GNO, etc.) are adjacent reference only and are documented in `data/catalog.json` for researcher awareness. This repo does not contribute to or fork alternative OS efforts.
 
 **Consequence.** `data/catalog.json` catalogs historical and contemporary IIGS ecosystem sources. Legitimate source repositories (Asimov archive, Internet Archive, Juiced.GS distribution) are documented in `docs/source-mount-references.md` for user self-service. Alternative OS efforts appear in the catalog with clear scope boundaries ("not a GS/OS reimplementation").
+
+## D-009 — Mission scope: clean-room deconstruction + net-new extensions, never modification of Apple binaries
+
+**As of:** 2026-05-05
+
+**Context.** The project mission has expanded beyond "fitness-function-driven compilation" to encompass two new pillars: (a) clean-room public deconstruction of GS/OS for researcher and hobbyist education, and (b) net-new extensions (drivers, FSTs, init files, system extensions) that unlock hardware capabilities on the Apple IIGS. The scope boundary must be clear: what gets published, what never does, and the legal framing behind both.
+
+**Decision.** This repository publishes annotations, callgraphs, behavioral models, methodology, and our own net-new code. This repository never publishes redistributed disassembly bytes, ROM files, factory GS/OS source, or modifications to Apple-protected binaries. The project operates under fair-use doctrine for personal study and clean-room reimplementation — citing precedents Sega v. Accolade (1992, reverse engineering for interoperability) and Sony v. Connectix (2000, clean-room emulation).
+
+**Consequence.** Two new documentation files establish the methodology (`docs/deconstruct/methodology.md`) and legal frame (`docs/deconstruct/legal-and-ethics.md`). Contributor guidelines require net-new code or annotations of personally-conducted observation; verbatim Apple byte sequences are prohibited. The discipline is called "tolerant publication" — we publish what we learned, not what we copied.
+
+## D-010 — Ghidra is the chosen world-class disassembly + decompilation tool
+
+**As of:** 2026-05-05
+
+**Context.** Deconstruction of GS/OS and the Apple IIGS ecosystem requires a production-grade disassembly and decompilation framework. The space has three candidates: Ghidra (NSA, Apache-2.0, actively maintained, community 65816 support), Capstone (single-instruction dissection, language bindings, limited decompiler), and MAME `apple2gs` driver (cycle-accurate execution oracle, slow, read-only). Each serves distinct roles; Ghidra is the primary analysis platform.
+
+**Decision.** Ghidra is the chosen primary disassembly and decompilation tool. The community-contributed 65816 SLEIGH processor module (search GitHub for `ghidra 65816` or check SleighDevs for the canonical entry) is battle-tested on GS/OS binaries and Apple IIGS object code. Capstone is the secondary instruction-level dissector (when byte-by-byte labeling is required). MAME `apple2gs` driver is the dynamic-execution oracle (verification only, not analysis primary). Ghidra's headless mode integrates with CI; decompiler output is publishable as derivative annotation under fair use.
+
+**Consequence.** `docs/deconstruct/methodology.md` documents the toolchain contract: Ghidra for static analysis, MAME for trace capture, GSplus debugger for interactive inspection. Workflow examples and baseline annotations live in `tools/deconstruct/`. The 65816 SLEIGH module is documented in a wiki page or `.md` reference inside `docs/deconstruct/` with installation and module-loading instructions.
+
+## D-011 — "Unlock" extensions are net-new code only — drivers, FSTs, init files, system extensions, CDevs
+
+**As of:** 2026-05-05
+
+**Context.** The Apple IIGS hardware (Ensoniq sound synthesizer, SuperHires video mode, GPI interrupt controller, accelerator cards like TransWarp and Zip) contains capabilities that the factory GS/OS ROM may not fully expose. Net-new drivers, file system translators (FSTs), system extensions, and control panel extensions (CDevs) can unlock this hardware without modifying Apple-protected system binaries. The architecture is well-documented in official Apple references.
+
+**Decision.** "Unlock" extensions are net-new Byte Works ORCA/C code written against the published Apple IIGS Toolbox and GS/OS interfaces. Legal unlock targets: `*/SYSTEM/DRIVERS/` (drivers for hardware interfaces), `*/SYSTEM/FSTs/` (file system translators), `*/SYSTEM/EXTENSIONS/` (system extensions and init files), `*/SYSTEM/CDEVS/` (control panel extensions). Modifications to Apple-supplied binaries, system files, or ROM images are prohibited. The canonical reference is Apple IIGS Toolbox Reference Vol. 2 (Chapter on System Extensions) and GS/OS Reference Vol. 1 (Chapters on FSTs and Device Drivers).
+
+**Consequence.** `docs/deconstruct/unlock-targets.md` maps the extension points and cites the Apple reference by chapter and section. Exemplar projects: accelerator-detection driver (probing for TransWarp GS / Zip GS registers), SuperHires video FST stub (proof-of-concept), and a simple CPanel extension (system metrics display). Each exemplar is standalone net-new code that compiles with ORCA/C and requires no modifications to Apple system binaries.

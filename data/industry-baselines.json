@@ -107,6 +107,27 @@
       "unit": "bytes",
       "source": "Typical ORCA/C hello world S16 with Toolbox calls is 5-10 KB; 8192 is the median.",
       "citation": "Apple IIGS Toolbox Reference Volume 1, sample programs"
+    },
+    {
+      "metric": "phase6.ghidra_present",
+      "value": 1,
+      "unit": "bool",
+      "source": "Ghidra 11.0+ is required for headless disassembly and static analysis of 65816 OMF binaries.",
+      "citation": "https://github.com/NationalSecurityAgency/ghidra/releases"
+    },
+    {
+      "metric": "phase6.ghidra_version",
+      "value": 11.0,
+      "unit": "semver",
+      "source": "Ghidra 11.0+ has stable headless mode and improved decompiler output for 65816 analysis via community processor modules.",
+      "citation": "https://github.com/NationalSecurityAgency/ghidra/releases"
+    },
+    {
+      "metric": "phase6.target_imports_clean",
+      "value": 0,
+      "unit": "exit_code",
+      "source": "Headless Ghidra import of a valid OMF binary returns exit 0 when the import succeeds; non-zero on failure or timeout.",
+      "citation": "https://github.com/NationalSecurityAgency/ghidra/blob/master/Ghidra/RuntimeScripts/Common/support/analyzeHeadlessREADME.html"
     }
   ]
 }

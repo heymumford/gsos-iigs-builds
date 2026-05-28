@@ -44,6 +44,14 @@ Three parallel tracks, dispatchable as 3-wide wave (within local subagent cap) o
 - **4B — Upstream contributions.** Pick one finding from 4A or one open issue in `digarok/gsplus`. Submit upstream PR. Document in `docs/upstream-contributions.md`.
 - **4C — Iterate.** Repeat 4A on the next batch from `data/catalog.json`. Stop when no new findings on three consecutive iterations or a wall-clock budget is exhausted (whichever first). No "until flawless" recursion.
 
+## Wave 5 plan — Deconstruction infrastructure (after D-009, D-010, D-011 merge)
+
+Three parallel tracks for clean-room deconstruction methodology and net-new unlock extensions:
+
+- **5A — Ghidra import + first subsystem deconstruction.** Set up Ghidra + 65816 SLEIGH processor, import GS/OS kernel binaries. Deconstruct the file manager dispatch table (most-documented subsystem). Publish as annotated callgraph + behavioral model. See `docs/deconstruct/methodology.md` for the publication contract.
+- **5B — First unlock extension.** Implement accelerator-detection driver (probing for TransWarp GS / Zip GS register signatures). Pure ORCA/C, no modifications to Apple binaries. Compiles with ORCA + Golden Gate, executes on GSplus. Serves as exemplar for the unlock-extensions pattern.
+- **5C — Deconstruction catalog refresh.** Update `data/catalog.json` with legal status and deconstruction readiness for each entry. Link to upstream source artifacts (Asimov, Internet Archive, Juiced.GS) where applicable. Flag entries as "fair use safe," "borderline," or "Apple IP only."
+
 ## Stop conditions (project-wide)
 
 - Each track closes on a binary green/red exit derived from the compound fitness score.
